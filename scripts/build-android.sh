@@ -1,12 +1,11 @@
 #!/bin/bash
 
 yarn react-scripts build
-yarn capacitor-assets generate --iconBackgroundColor '#eeeeee' --iconBackgroundColorDark '#222222' --splashBackgroundColor '#eeeeee' --splashBackgroundColorDark '#111111'
-rm -rf icons
-yarn cap sync
+gitgyarn cap sync
 docker start capacitor-builder
+docker exec -ti capacitor-builder rm -rf *
 docker cp . capacitor-builder:/app
-docker exec capacitor-builder app-gradle build
+docker exec -ti capacitor-builder app-gradle build
 rm -rf dist
 mkdir -p dist
 docker cp capacitor-builder:/app/android/app/build dist
