@@ -14,6 +14,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "cross-spawn": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
@@ -22,10 +23,9 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "android-build": "ts-node scripts/buildAndroid.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.4",
-    "@capacitor/cli": "^5.6.0"
+    "@capacitor/cli": "^5.6.0",
+    "@types/cross-spawn": "^6.0.6"
   }
 }
