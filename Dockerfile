@@ -1,6 +1,6 @@
 FROM debian:12
 LABEL authors="xdcz"
-WORKDIR /app
+WORKDIR /work
 
 
 # https://wiki.debian.org/Java
@@ -23,9 +23,12 @@ ENV JAVA_HOME /usr/lib/jvm/java-${JAVA_VERSION}-openjdk-amd64/
 ARG SCRIPTS=${HOME}/scripts
 RUN mkdir ${SCRIPTS}
 ENV PATH ${PATH}:${SCRIPTS}
-## Gradle
-RUN printf '#!/bin/bash\ncd /app/android\n./gradlew "$@"' > ${SCRIPTS}/app-gradle
-RUN chmod +x ${SCRIPTS}/app-gradle
+## Work gradle script
+RUN printf '#!/bin/bash\ncd /work/android\n./gradlew "$@"' > ${SCRIPTS}/wgradle
+RUN chmod +x ${SCRIPTS}/wgradle
+## Cleanup script
+RUN printf '#!/bin/bash\nrm -rf /work/*' > ${SCRIPTS}/wclean
+RUN chmod +x ${SCRIPTS}/wclean
 
 
 # Setup android
