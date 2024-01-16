@@ -1,7 +1,7 @@
 #!/bin/bash
 
 yarn react-scripts build
-gitgyarn cap sync
+yarn cap sync
 docker start capacitor-builder
 docker exec -ti capacitor-builder rm -rf *
 docker cp . capacitor-builder:/app
